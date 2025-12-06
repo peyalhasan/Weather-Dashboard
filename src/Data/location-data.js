@@ -7,7 +7,7 @@ const getLocationByName = async(location) =>{
     const data = await response.json();
     
     const filtered = data.results.filter(item=> item.name === location);
-    if(filtered.lenght > 0){
+    if(filtered.length > 0){
         return filtered[0]
     }else{
         const defaultLocation = {

@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { LocationContext } from "../Context";
 
 
 
 export default function useWeather() {
+
     
     const [weatherData, setWeatherData] = useState({
         location: '',
@@ -15,6 +17,7 @@ export default function useWeather() {
         wind: '',
         time: '',
         longitude: '',
+
         latitude: '',
     });
 
@@ -26,6 +29,11 @@ export default function useWeather() {
 
     // If error then error state
     const [error, setError] = useState(null);
+
+    // Data from search 
+
+    const {selectedLocation} = useContext(LocationContext);
+    console.log(selectedLocation)
 
     // Fetch API
     const fetchWeatherData = async (latitude, longitude) => {

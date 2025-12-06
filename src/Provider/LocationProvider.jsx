@@ -9,6 +9,7 @@ const LocationProvider = ({children}) =>{
         longitude: 0,
     })
 
+
     return (
         <LocationContext.Provider value={{selectedLocation, setSelectedLocation}} >
             {children}
