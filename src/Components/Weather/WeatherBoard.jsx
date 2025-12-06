@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import AddToFavourite from "./AddToFavourite";
 import WeatherCondition from "./WeatherCondition";
 import WeatherHeadline from "./WeatherHeadline";
 import { WeatherContext } from "../../Context";
+import ToggleFavourite from "./AddToFavourite";
 
 
 const WeatherBoard = () => {
@@ -19,7 +19,7 @@ const WeatherBoard = () => {
                             :
                             (
                                 <>
-                                    <AddToFavourite />
+                                    <ToggleFavourite />
                                     <WeatherHeadline />
                                     <WeatherCondition />
                                 </>
