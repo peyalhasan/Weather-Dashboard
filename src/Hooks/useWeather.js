@@ -5,7 +5,7 @@ import { LocationContext } from "../Context";
 
 export default function useWeather() {
 
-    
+
     const [weatherData, setWeatherData] = useState({
         location: '',
         climate: '',
@@ -32,17 +32,17 @@ export default function useWeather() {
 
     // Data from search 
 
-    const {selectedLocation} = useContext(LocationContext);
-    console.log(selectedLocation)
+    const { selectedLocation } = useContext(LocationContext);
 
     // Fetch API
     const fetchWeatherData = async (latitude, longitude) => {
         try {
-            setLoading({
-                ...loading,
-                state: true,
-                message: 'Fetching weather data....',
-            });
+            setLoading(
+                (prev) => ({
+                    ...prev,
+                    state: true,
+                    message: 'Fetching weather data....',
+                }));
 
             //TODO: Make the fetchg call
 
@@ -57,21 +57,22 @@ export default function useWeather() {
 
             const data = await response.json();
 
-            const updateWeatherData = {
-                ...weatherData,
-                location: data?.name,
-                climate: data?.weather[0]?.main,
-                temperature: data?.main?.temp,
-                maxTemperature: data?.main?.temp_max,
-                minTemperature: data?.main?.temp_min,
-                humidity: data?.main?.humidity,
-                cloudPercentage: data?.clouds?.all,
-                wind: data?.wind?.speed,
-                time: data?.dt,
-                longitude: longitude,
-                latitude: latitude,
-            }
-            setWeatherData(updateWeatherData)
+            setWeatherData(
+                prev => ({
+                    ...prev,
+                    location: data?.name,
+                    climate: data?.weather[0]?.main,
+                    temperature: data?.main?.temp,
+                    maxTemperature: data?.main?.temp_max,
+                    minTemperature: data?.main?.temp_min,
+                    humidity: data?.main?.humidity,
+                    cloudPercentage: data?.clouds?.all,
+                    wind: data?.wind?.speed,
+                    time: data?.dt,
+                    longitude: longitude,
+                    latitude: latitude,
+                })
+            )
         } catch (err) {
             setError(err)
         } finally {
@@ -83,15 +84,21 @@ export default function useWeather() {
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         setLoading({
-            loading: true,
+            state: true,
             message: "Finding Location...."
         })
-        navigator.geolocation.getCurrentPosition((position)=>{
-            fetchWeatherData(position.coords.latitude, position.coords.longitude)
-        })
-    },[])
+        if (selectedLocation.latitude && selectedLocation.longitude) {
+            fetchWeatherData(selectedLocation.latitude, selectedLocation.longitude)
+        } else {
+
+            navigator.geolocation.getCurrentPosition((position) => {
+                fetchWeatherData(position.coords.latitude, position.coords.longitude)
+            })
+        }
+    }, [selectedLocation.latitude, selectedLocation.longitude])
+
 
     return {
         weatherData,

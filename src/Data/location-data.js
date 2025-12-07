@@ -1,15 +1,15 @@
 
 
-const getLocationByName = async(location) =>{
-    if(!location) return null;
+const getLocationByName = async (location) => {
+    if (!location) return null;
 
     const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${location}&count=10&language=en&format=json`);
     const data = await response.json();
-    
-    const filtered = data.results.filter(item=> item.name === location);
-    if(filtered.length > 0){
+
+    const filtered = data.results.filter(item => item.name === location);
+    if (filtered.length > 0) {
         return filtered[0]
-    }else{
+    } else {
         const defaultLocation = {
             location: '',
             latitude: 0,
@@ -19,4 +19,4 @@ const getLocationByName = async(location) =>{
     }
 }
 
- export default getLocationByName;
+export default getLocationByName;

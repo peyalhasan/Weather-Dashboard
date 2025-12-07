@@ -6,15 +6,14 @@ const Search = () => {
 
     const [searchTerm, setSearchTerm] = useState('');
 
-    const {selectedLocation, setSelectedLocation} = useContext(LocationContext)
+    const { setSelectedLocation } = useContext(LocationContext)
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const fetchedLocation =await getLocationByName(searchTerm);
-        setSelectedLocation({...fetchedLocation})
+        const fetchedLocation = await getLocationByName(searchTerm);
+        setSelectedLocation({ ...fetchedLocation })
     }
 
-    console.log(selectedLocation)
     return (
         <form action="#" onSubmit={handleSubmit} >
             <div className="flex items-center space-x-2 py-2 px-3 group focus-within:bg-black/30 transition-all border-b border-white/50 focus-within:border-b-0 focus-within:rounded-md">
