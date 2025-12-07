@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import HeartIcon from '../../assets/Heart.svg';
+import HeartIcon from '../../assets/heart.svg';
 import RedHeartIcon from '../../assets/heart-red.svg';
 import { FavouriteContext, WeatherContext } from '../../Context';
 
