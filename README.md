@@ -121,7 +121,7 @@ To deploy your own version:
 4. Deploy — Vercel will build automatically after every push
 
 ### 🔗 Live Demo  
-https://weather-dashboa
+https://weather-dashboard-peyal.vercel.app/
 
 
 ## 🔧 Installation
@@ -129,6 +129,7 @@ https://weather-dashboa
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/peyalhasan/Weather-Dashboard.git
+
 cd Weather-Dashboard
 
 npm install
@@ -145,8 +146,7 @@ Peyal Hasan
 [https://github.com/peyalhasan](https://github.com/peyalhasan)
 
 **📨 Email:**  
-peyalhasan.dev@gmail.com  <!-- Replace with your real email if needed -->
-
+peyalhasan.143@gmail.com  
 **🔗 Live Demo:**  
 [https://weather-dashboard-peyal.vercel.app/](https://weather-dashboard-peyal.vercel.app/)
 
