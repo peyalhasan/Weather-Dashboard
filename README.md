@@ -41,20 +41,21 @@ Includes:
 
 The app follows a modular, scalable **React** structure:
 
+```
 Main
  └── App
       └── Page
            ├── Header
            │     ├── Logo
            │     ├── Search
-           │     └── Favorite
-           ├── WeatherBoard
-           │     ├── AddToFavourite
-           │     ├── WeatherHeadline
-           │     └── WeatherCondition
-           └── FavouriteListModal
+           │     ├── FavoriteIcon  ← triggers FavouriteListModal
+           │ 
+           └── WeatherBoard
+                 ├── AddToFavourite
+                 ├── WeatherHeadline
+                 └── WeatherCondition
 
-
+```
 
 ### Header  
 Handles navigation, logo, search, and favorites access.
@@ -132,7 +133,7 @@ cd Weather-Dashboard
 
 npm install
 
-
+```
 ## 📬 Contact
 
 If you have questions, feedback, or feature requests, feel free to reach out.
